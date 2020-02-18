@@ -1,0 +1,19 @@
+---
+scalar2: 2
+simple_list2:
+  - spam
+  - eggs
+  - ham
+simple_dict2:
+  a: 3
+  b: 4
+
+override_type: [1, 2, 3]
+
+complex_dict:
+  foo: 1
+  bar:
+    baz2: 'string2'
+  spam:
+    duck: true
+    witch: true

@@ -1,0 +1,48 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: load source files
+      merge_var_files:
+        name: test1
+        files:
+          - source1.yml
+          - source2.yml
+          - source3.yml
+
+    - name: merge simple values
+      assert:
+        that:
+          - test1.scalar1 == 1
+          - test1.scalar2 == 2
+          - test1.scalar3 == 3
+          - test1.simple_list1 == ['foo', 'bar', 'baz']
+          - test1.simple_list2 == ['spam', 'eggs', 'ham']
+          - test1.simple_list3 == ['a', 'b', 'c']
+          - test1.simple_dict1.a == 1
+          - test1.simple_dict1.b == 2
+          - test1.simple_dict2.a == 3
+          - test1.simple_dict2.b == 4
+          - test1.simple_dict3.a == 5
+          - test1.simple_dict3.b == 6
+
+    - name: merge overriding types
+      assert:
+        that:
+          - test1.override_type == [1, 2, 3]
+
+    - name: merge unique value
+      assert:
+        that:
+          - test1.unique_value == 'foobar'
+
+    - name: merge multi-level dictionary
+      assert:
+        that:
+          - test1.complex_dict.foo == 1
+          - test1.complex_dict.bar.baz == 'string1'
+          - test1.complex_dict.bar.baz2 == 'string2'
+          - test1.complex_dict.spam.eggs.ham == 'override_string2'
+          - test1.complex_dict.spam.duck == true
+          - test1.complex_dict.spam.witch == true

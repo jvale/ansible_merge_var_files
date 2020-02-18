@@ -1,0 +1,16 @@
+---
+scalar3: 3
+simple_list3:
+  - a
+  - b
+  - c
+simple_dict3:
+  a: 5
+  b: 6
+
+unique_value: 'foobar'
+
+complex_dict:
+  spam:
+    eggs:
+      ham: 'override_string2'
