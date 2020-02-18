@@ -12,6 +12,17 @@ When merging, the following strategy is applied:
  * dictionaries are merged recursively
  * all other values are overridden by the newer item
 
+## Testing
+Tests are executed using `tox`, and the following combinations are tested:
+
+| Python    |    Ansible    |
+|-----------|---------------|
+| 2.7       | 2.8 (latest)  |
+| 2.7       | 2.9 (latest)  |
+| 3.7       | 2.8 (latest)  |
+| 3.7       | 2.9 (latest)  |
+
+
 ## Example usage
 ```yaml
 - name: load and merge vars from all files
